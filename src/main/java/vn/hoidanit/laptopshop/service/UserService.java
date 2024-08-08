@@ -15,7 +15,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getAllUser() {
+    public List<User> getAllUsers() {
         return this.userRepository.findAll();
     }
 
@@ -23,8 +23,16 @@ public class UserService {
         return this.userRepository.findByEmail(email);
     }
 
+    public User getUserById(long id) {
+        return this.userRepository.findById(id);
+    }
+
     public User handleSaveUser(User user) {
         User eric = this.userRepository.save(user);
         return eric;
+    }
+
+    public void deleteAUser(long id) {
+        this.userRepository.deleteById(id);
     }
 }

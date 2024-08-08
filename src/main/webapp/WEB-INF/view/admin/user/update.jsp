@@ -12,7 +12,7 @@ uri="http://www.springframework.org/tags/form" prefix="form"%>
     />
     <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
     <meta name="author" content="Hỏi Dân IT" />
-    <title>Dashboard Delete - Hỏi Dân IT</title>
+    <title>Dashboard Update - Hỏi Dân IT</title>
     <link href="/css/styles.css" rel="stylesheet" />
     <script
       src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -37,27 +37,24 @@ uri="http://www.springframework.org/tags/form" prefix="form"%>
             <div class="container mt-5">
               <div class="row">
                 <div class="col-md-6 col-12 mx-auto">
-                  <h3>Create a user</h3>
+                  <h3>Update a user</h3>
                   <hr />
                   <form:form
                     method="post"
-                    action="/admin/user/create"
+                    action="/admin/user/update"
                     modelAttribute="newUser"
                   >
+                    <div class="mb-3" style="display: none">
+                      <label class="form-label">ID:</label>
+                      <form:input type="text" class="form-control" path="id" />
+                    </div>
                     <div class="mb-3">
                       <label class="form-label">Email:</label>
                       <form:input
                         type="email"
                         class="form-control"
                         path="email"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Password:</label>
-                      <form:input
-                        type="password"
-                        class="form-control"
-                        path="password"
+                        disabled="true"
                       />
                     </div>
                     <div class="mb-3">
@@ -85,8 +82,8 @@ uri="http://www.springframework.org/tags/form" prefix="form"%>
                       />
                     </div>
 
-                    <button type="submit" class="btn btn-primary">
-                      Create
+                    <button type="submit" class="btn btn-warning">
+                      Update
                     </button>
                   </form:form>
                 </div>
