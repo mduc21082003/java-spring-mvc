@@ -1,5 +1,7 @@
 package vn.hoidanit.laptopshop.controller.client;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import vn.hoidanit.laptopshop.domain.Cart;
+import vn.hoidanit.laptopshop.domain.CartDetail;
 import vn.hoidanit.laptopshop.domain.Product;
+import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.service.ProductService;
 
 @Controller
@@ -35,8 +40,14 @@ public class ItemController {
         long productId = id;
         String email = (String) session.getAttribute("email");
 
-        this.productService.handleAddProductToCart(email, productId);
+        this.productService.handleAddProductToCart(email, productId, session);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/cart")
+    public String getCartPage(Model model) {
+
+        return "client/cart/show";
     }
 }
