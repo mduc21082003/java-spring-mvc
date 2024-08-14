@@ -70,6 +70,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     <c:forEach var="cartDetail" items="${cartDetails}">
                                         <tr>
                                             <th scope="row">
