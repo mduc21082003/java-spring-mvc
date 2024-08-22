@@ -96,7 +96,7 @@ public class HomePageController {
         currentUser.setId(id);
 
         List<Order> orders = this.orderService.fetchOrderByUser(currentUser);
-        model.addAttribute("orders", orders)
+        model.addAttribute("orders", orders);
 
         return "client/cart/order-history";
     }
