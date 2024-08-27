@@ -23,7 +23,6 @@ import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
 import vn.hoidanit.laptopshop.service.OrderService;
 import vn.hoidanit.laptopshop.service.ProductService;
 import vn.hoidanit.laptopshop.service.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomePageController {
@@ -46,9 +45,11 @@ public class HomePageController {
 
     @GetMapping("/")
     public String getHomePage(Model model) {
+        // List<Product> products = this.productService.fetchProducts();
         Pageable pageable = PageRequest.of(0, 10);
         Page<Product> prs = this.productService.fetchProducts(pageable);
         List<Product> products = prs.getContent();
+
         model.addAttribute("products", products);
         return "client/homepage/show";
     }
@@ -95,8 +96,8 @@ public class HomePageController {
 
     @GetMapping("/order-history")
     public String getOrderHistoryPage(Model model, HttpServletRequest request) {
-        User currentUser = new User();
-        HttpSession session = request.getSession();
+        User currentUser = new User();// null
+        HttpSession session = request.getSession(false);
         long id = (long) session.getAttribute("id");
         currentUser.setId(id);
 
