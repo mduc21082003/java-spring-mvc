@@ -2,6 +2,8 @@ package vn.hoidanit.laptopshop.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.domain.Role;
@@ -16,21 +18,21 @@ import vn.hoidanit.laptopshop.repository.UserRepository;
 public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
     public UserService(UserRepository userRepository,
             RoleRepository roleRepository,
-            OrderRepository orderRepository,
-            ProductRepository productRepository) {
+            ProductRepository productRepository,
+            OrderRepository orderRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.orderRepository = orderRepository;
         this.productRepository = productRepository;
+        this.orderRepository = orderRepository;
     }
 
-    public List<User> getAllUsers() {
-        return this.userRepository.findAll();
+    public Page<User> getAllUsers(Pageable page) {
+        return this.userRepository.findAll(page);
     }
 
     public List<User> getAllUsersByEmail(String email) {
