@@ -1,6 +1,7 @@
 package vn.hoidanit.laptopshop.controller.client;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -172,14 +173,14 @@ public class ItemController {
 
         Pageable pageable = PageRequest.of(page - 1, 60);
 
-        // String name = nameOptional.isPresent() ? nameOptional.get() : "";
-        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
-        // name);
+        String name = nameOptional.isPresent() ? nameOptional.get() : "";
+        Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+                name);
 
         // case 1
-        double min = minOptional.isPresent() ? Double.parseDouble(minOptional.get())
-                : 0;
-        Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, min);
+        // double min = minOptional.isPresent() ? Double.parseDouble(minOptional.get())
+        // : 0;
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, min);
 
         // case 2
         // double max = maxOptional.isPresent() ? Double.parseDouble(maxOptional.get())
